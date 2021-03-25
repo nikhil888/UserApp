@@ -12,7 +12,7 @@ const UberTypes = (props) => {
   return (
     <View>
       {typesData.map((type) => (
-        <UberTypeRow type={type} />
+        <UberTypeRow type={type} key={type.id}/>
       ))}
 
       <Pressable onPress={confirm} style={{
@@ -21,6 +21,7 @@ const UberTypes = (props) => {
         margin: 10,
         alignItems: 'center',
       }}>
+        
         <Text style={{color: 'white', fontWeight: 'bold'}}>
           Confirm Uber
         </Text>

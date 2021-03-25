@@ -1,11 +1,13 @@
 import React,{useEffect} from 'react';
 import {StatusBar} from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
-import DestinationSearch from './src/screens/DestinationSearch';
 // import '@react-native-community/geolocation';
-import SearchResults from './src/screens/SearchResults';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+import Router from './src/navigation/Root';
+import Amplify from 'aws-amplify'
+import { withAuthenticator } from 'aws-amplify-react-native'
+import config from './src/aws-exports'
+Amplify.configure(config)
 
 // navigator.geolocation = require('@react-native-community/geolocation');
 
@@ -56,11 +58,9 @@ const App = () => {
   return (
     <>
     <StatusBar barStyle="dark-content"/>
-    {/* <HomeScreen/> */}
-    <DestinationSearch/>
-    {/* <SearchResults/> */}
+    <Router/>
     </>
   );
 };
 
-export default App;
+export default withAuthenticator(App)
